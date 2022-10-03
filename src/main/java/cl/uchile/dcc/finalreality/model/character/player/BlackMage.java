@@ -22,10 +22,11 @@ import org.jetbrains.annotations.NotNull;
  * @author ~Your name~
  * @version 2.0
  */
-public class BlackMage extends AbstractPlayerCharacter {
+public class BlackMage extends AbstractPlayerCharacter  {
 
   private int currentMp;
   private final int maxMp;
+
 
   /**
    * Creates a new Black Mage.
@@ -39,7 +40,7 @@ public class BlackMage extends AbstractPlayerCharacter {
    * @param turnsQueue
    *     the queue with the characters waiting for their turn
    */
-  protected BlackMage(final @NotNull String name, final int maxHp, final int defense,
+  public BlackMage(final @NotNull String name, final int maxHp, final int defense,
       int maxMp, final @NotNull BlockingQueue<GameCharacter> turnsQueue)
       throws InvalidStatValueException {
     super(name, maxHp, defense, turnsQueue);
@@ -53,7 +54,7 @@ public class BlackMage extends AbstractPlayerCharacter {
   /**
    * Returns the character's current MP.
    */
-  private int getCurrentMp() {
+  public int getCurrentMp() {
     return currentMp;
   }
 
@@ -69,7 +70,7 @@ public class BlackMage extends AbstractPlayerCharacter {
   /**
    * Returns the character's max MP.
    */
-  private int getMaxMp() {
+  public int getMaxMp() {
     return maxMp;
   }
   // endregion
@@ -89,7 +90,6 @@ public class BlackMage extends AbstractPlayerCharacter {
         && defense == that.defense
         && maxMp == that.maxMp;
   }
-
   @Override
   public String toString() {
     return "BlackMage{currentMp=%d, maxMp=%d, maxHp=%d, defense=%d, name='%s'}"

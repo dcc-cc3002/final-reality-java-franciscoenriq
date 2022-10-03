@@ -5,24 +5,20 @@
  * You should have received a copy of the license along with this
  * work. If not, see <http://creativecommons.org/licenses/by/4.0/>.
  */
-
 package cl.uchile.dcc.finalreality.model.character.player;
-
 import cl.uchile.dcc.finalreality.exceptions.InvalidStatValueException;
 import cl.uchile.dcc.finalreality.model.character.GameCharacter;
 import java.util.Objects;
 import java.util.concurrent.BlockingQueue;
 import org.jetbrains.annotations.NotNull;
-
 /**
- * A {@link PlayerCharacter} that can equip {@code Sword}s,{@code Knife}s and
+ * A {@link GameCharacter} that can equip {@code Sword}s,{@code Knife}s and
  * {@code Axe}s.
  */
-public class Knight extends AbstractPlayerCharacter {
 
+public class Knight extends AbstractPlayerCharacter {
   /**
    * Creates a new Knight.
-   *
    * @param name
    *     the character's name
    * @param maxHp
@@ -37,12 +33,10 @@ public class Knight extends AbstractPlayerCharacter {
       throws InvalidStatValueException {
     super(name, maxHp, defense, turnsQueue);
   }
-
   @Override
   public String toString() {
     return "Knight{maxHp=%d, defense=%d, name='%s'}".formatted(maxHp, defense, name);
   }
-
   @Override
   public int hashCode() {
     return Objects.hash(Knight.class, name, maxHp, defense);

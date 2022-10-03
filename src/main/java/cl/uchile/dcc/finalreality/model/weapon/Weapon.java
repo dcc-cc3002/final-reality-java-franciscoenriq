@@ -1,19 +1,17 @@
 package cl.uchile.dcc.finalreality.model.weapon;
-
 import java.util.Objects;
-
 /**
  * A class that holds all the information of a weapon.
- *
  * @author <a href="https://www.github.com/r8vnhill">R8V</a>
  * @author ~Your name~
  */
-public class Weapon {
-
+public  class Weapon {
   private final String name;
   private final int damage;
   private final int weight;
   private final WeaponType type;
+
+
 
   /**
    * Creates a weapon with a name, a base damage, speed, and it's type.
@@ -26,25 +24,25 @@ public class Weapon {
     this.type = type;
   }
 
-  private String getName() {
-    return name;
-  }
 
-  private int getDamage() {
-    return damage;
-  }
+
 
   /**
-   * Returns the weight of the weapon.
+   * there are the getters
+   * @return variables
    */
+
+  private int getDamage() {return damage;}
   public int getWeight() {
     return weight;
   }
-
   private WeaponType getType() {
     return type;
   }
 
+  /**
+   * @return boolean
+   */
   @Override
   public boolean equals(final Object o) {
     if (this == o) {
@@ -59,12 +57,10 @@ public class Weapon {
         && name.equals(weapon.name)
         && type == weapon.type;
   }
-
   @Override
   public int hashCode() {
     return Objects.hash(Weapon.class, name, damage, weight, type);
   }
-
   @Override
   public String toString() {
     return "Weapon{name='%s', damage=%d, weight=%d, type=%s}"

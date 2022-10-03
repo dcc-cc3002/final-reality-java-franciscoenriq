@@ -41,7 +41,6 @@ public class Thief extends AbstractPlayerCharacter {
       throws InvalidStatValueException {
     super(name, maxHp, defense, turnsQueue);
   }
-
   @Override
   public int hashCode() {
     return Objects.hash(Thief.class, name, maxHp, defense);
