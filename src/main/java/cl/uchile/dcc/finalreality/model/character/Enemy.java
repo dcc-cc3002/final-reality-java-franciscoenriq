@@ -12,7 +12,7 @@ import org.jetbrains.annotations.NotNull;
  * @author <a href="https://www.github.com/r8vnhill">R8V</a>
  * @author ~Your name~
  */
-public class Enemy extends AbstractCharacter {
+public  class  Enemy extends AbstractCharacter {
 
   private final int weight;
 

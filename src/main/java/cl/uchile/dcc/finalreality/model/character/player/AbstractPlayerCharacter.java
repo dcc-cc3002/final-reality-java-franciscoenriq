@@ -43,6 +43,7 @@ public abstract class AbstractPlayerCharacter extends AbstractCharacter implemen
    * @param turnsQueue
    *     the queue with the characters waiting for their turn
    */
+  // protected: El campo o metodo es visible en la clase en donde se define y en cualquiera de sus subclases
   protected AbstractPlayerCharacter(@NotNull final String name, final int maxHp,
       final int defense, @NotNull final BlockingQueue<GameCharacter> turnsQueue)
       throws InvalidStatValueException {

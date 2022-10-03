@@ -1,6 +1,6 @@
 package cl.uchile.dcc.finalreality.model.character;
-
 import cl.uchile.dcc.finalreality.exceptions.InvalidStatValueException;
+import cl.uchile.dcc.finalreality.model.weapon.Weapon;
 
 /**
  * This represents a character from the game.
@@ -10,35 +10,32 @@ import cl.uchile.dcc.finalreality.exceptions.InvalidStatValueException;
  * @author ~Your name~
  */
 public interface GameCharacter {
-
   /**
    * Sets a scheduled executor to make this character (thread) wait for {@code speed / 10}
    * seconds before adding the character to the queue.
    */
   void waitTurn();
-
   /**
    * Returns this character's name.
    */
-  String getName();
 
   /**
    * Returns this character's current HP.
    */
-  int getCurrentHp();
 
   /**
    * Returns this character's max HP.
    */
-  int getMaxHp();
 
   /**
    * Returns this character's defense.
    */
-  int getDefense();
+
+
 
   /**
    * Sets this character's current HP to {@code newHp}.
    */
   void setCurrentHp(int hp) throws InvalidStatValueException;
+
 }

@@ -9,6 +9,7 @@ import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.TimeUnit;
 import org.jetbrains.annotations.NotNull;
 
+
 /**
  * An abstract class that holds the common behaviour of all the characters in the game.
  *
@@ -76,22 +77,22 @@ public abstract class AbstractCharacter implements GameCharacter {
     scheduledExecutor.shutdown();
   }
 
-  @Override
+
   public String getName() {
     return name;
   }
 
-  @Override
+
   public int getCurrentHp() {
     return currentHp;
   }
 
-  @Override
+
   public int getMaxHp() {
     return maxHp;
   }
 
-  @Override
+
   public int getDefense() {
     return defense;
   }
