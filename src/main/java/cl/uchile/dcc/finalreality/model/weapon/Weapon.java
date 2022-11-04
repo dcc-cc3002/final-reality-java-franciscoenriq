@@ -8,42 +8,36 @@ import java.util.Objects;
  * @author <a href="https://www.github.com/r8vnhill">R8V</a>
  * @author ~Your name~
  */
-public class Weapon {
+public abstract class Weapon {
 
   private final String name;
   private final int damage;
   private final int weight;
-  private final WeaponType type;
+
 
   /**
    * Creates a weapon with a name, a base damage, speed, and it's type.
    */
-  public Weapon(final String name, final int damage, final int weight,
-      final WeaponType type) {
+  public Weapon(final String name, final int damage, final int weight) {
     this.name = name;
     this.damage = damage;
     this.weight = weight;
-    this.type = type;
-  }
 
+  }
+  /**
+   * The nexts methods are the getters of name, damage and weight of the weapon
+   */
   private String getName() {
     return name;
   }
-
   private int getDamage() {
     return damage;
   }
 
-  /**
-   * Returns the weight of the weapon.
-   */
   public int getWeight() {
     return weight;
   }
 
-  private WeaponType getType() {
-    return type;
-  }
 
   @Override
   public boolean equals(final Object o) {
@@ -56,18 +50,20 @@ public class Weapon {
     return hashCode() == weapon.hashCode()
         && damage == weapon.damage
         && weight == weapon.weight
-        && name.equals(weapon.name)
-        && type == weapon.type;
+        && name.equals(weapon.name);
+
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(Weapon.class, name, damage, weight, type);
+    return Objects.hash(Weapon.class, name, damage, weight);
   }
 
   @Override
   public String toString() {
     return "Weapon{name='%s', damage=%d, weight=%d, type=%s}"
-        .formatted(name, damage, weight, type);
+        .formatted(name, damage, weight);
   }
+
+
 }
