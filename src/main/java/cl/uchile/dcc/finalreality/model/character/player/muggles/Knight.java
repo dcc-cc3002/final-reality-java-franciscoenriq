@@ -6,63 +6,62 @@
  * work. If not, see <http://creativecommons.org/licenses/by/4.0/>.
  */
 
-package cl.uchile.dcc.finalreality.model.character.player;
+package cl.uchile.dcc.finalreality.model.character.player.muggles;
 
 import cl.uchile.dcc.finalreality.exceptions.InvalidStatValueException;
 import cl.uchile.dcc.finalreality.model.character.GameCharacter;
 import java.util.Objects;
 import java.util.concurrent.BlockingQueue;
+
+import cl.uchile.dcc.finalreality.model.character.player.AbstractPlayerCharacter;
+import cl.uchile.dcc.finalreality.model.character.player.PlayerCharacter;
 import org.jetbrains.annotations.NotNull;
 
 /**
  * A {@link PlayerCharacter} that can equip {@code Sword}s,{@code Knife}s and
- * {@code Bow}s.
- *
- * @author <a href="https://www.github.com/r8vnhill">R8V</a>
- * @author ~Your name~
- * @version 2.0
+ * {@code Axe}s.
  */
-public class Thief extends AbstractPlayerCharacter {
+public class Knight extends AbstractPlayerCharacter {
 
   /**
-   * Creates a new Thief.
+   * Creates a new Knight.
    *
    * @param name
    *     the character's name
    * @param maxHp
-   *     the character's max hp
+   *     the character's maximum health points
    * @param defense
    *     the character's defense
    * @param turnsQueue
    *     the queue with the characters waiting for their turn
    */
-  public Thief(final @NotNull String name, final int maxHp, final int defense,
-      final @NotNull BlockingQueue<GameCharacter> turnsQueue)
+  public Knight(@NotNull final String name, int maxHp, int defense,
+      @NotNull final BlockingQueue<GameCharacter> turnsQueue)
       throws InvalidStatValueException {
     super(name, maxHp, defense, turnsQueue);
   }
 
   @Override
-  public int hashCode() {
-    return Objects.hash(Thief.class, name, maxHp, defense);
+  public String toString() {
+    return "Knight{maxHp=%d, defense=%d, name='%s'}".formatted(maxHp, defense, name);
   }
 
   @Override
-  public boolean equals(final Object o) {
-    if (this == o) {
+  public int hashCode() {
+    return Objects.hash(Knight.class, name, maxHp, defense);
+  }
+
+  @Override
+  public boolean equals(final Object obj) {
+    if (this == obj) {
       return true;
     }
-    if (!(o instanceof final Thief that)) {
+    if (!(obj instanceof final Knight that)) {
       return false;
     }
     return hashCode() == that.hashCode()
         && name.equals(that.name)
         && maxHp == that.maxHp
         && defense == that.defense;
-  }
-
-  @Override
-  public String toString() {
-    return "Thief{maxHp=%d, defense=%d, name='%s'}".formatted(maxHp, defense, name);
   }
 }

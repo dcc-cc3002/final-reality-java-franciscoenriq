@@ -13,8 +13,6 @@ public abstract class Weapon {
   private final String name;
   private final int damage;
   private final int weight;
-
-
   /**
    * Creates a weapon with a name, a base damage, speed, and it's type.
    */
@@ -27,10 +25,10 @@ public abstract class Weapon {
   /**
    * The nexts methods are the getters of name, damage and weight of the weapon
    */
-  private String getName() {
+  public String getName() {
     return name;
   }
-  private int getDamage() {
+  public int getDamage() {
     return damage;
   }
 
@@ -61,7 +59,7 @@ public abstract class Weapon {
 
   @Override
   public String toString() {
-    return "Weapon{name='%s', damage=%d, weight=%d, type=%s}"
+    return "Weapon{name='%s', damage=%d, weight=%d}"
         .formatted(name, damage, weight);
   }
 

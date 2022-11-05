@@ -2,7 +2,7 @@ package cl.uchile.dcc;
 
 import cl.uchile.dcc.finalreality.exceptions.InvalidStatValueException;
 import cl.uchile.dcc.finalreality.model.character.GameCharacter;
-import cl.uchile.dcc.finalreality.model.character.player.Thief;
+import cl.uchile.dcc.finalreality.model.character.player.muggles.Thief;
 import cl.uchile.dcc.finalreality.model.weapon.Weapon;
 
 import java.util.Random;
