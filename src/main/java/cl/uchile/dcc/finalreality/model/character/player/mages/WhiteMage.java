@@ -24,11 +24,7 @@ import org.jetbrains.annotations.NotNull;
  * @author <a href="https://www.github.com/r8vnhill">R8V</a>
  * @author ~Your name~
  */
-public class WhiteMage extends AbstractPlayerCharacter {
-
-  private int currentMp;
-  private final int maxMp;
-
+public class WhiteMage extends AbstractMage {
   /**
    * Creates a new character.
    *
@@ -41,12 +37,11 @@ public class WhiteMage extends AbstractPlayerCharacter {
    * @param turnsQueue
    *     the queue with the characters waiting for their turn
    */
-  protected WhiteMage(final @NotNull String name, final int maxHp, final int defense,
-      int maxMp, final @NotNull BlockingQueue<GameCharacter> turnsQueue)
-      throws InvalidStatValueException {
-    super(name, maxHp, defense, turnsQueue);
-    this.maxMp = maxMp;
-    this.currentMp = maxMp;
+  public WhiteMage(final @NotNull String name, final int maxHp, final int defense,
+                   int maxMp, final @NotNull BlockingQueue<GameCharacter> turnsQueue)
+          throws InvalidStatValueException {
+    super(name, maxHp, defense, maxMp, turnsQueue);
+
   }
 
   @Override
@@ -76,13 +71,6 @@ public class WhiteMage extends AbstractPlayerCharacter {
   }
 
   /**
-   * Returns the current MP of the character.
-   */
-  public int getCurrentMp() {
-    return currentMp;
-  }
-
-  /**
    * Sets the current MP of the character to {@code newMp}.
    */
   public void setCurrentMp(final int newMp) throws InvalidStatValueException {
@@ -91,10 +79,4 @@ public class WhiteMage extends AbstractPlayerCharacter {
     this.currentMp = newMp;
   }
 
-  /**
-   * Returns the max MP of the character.
-   */
-  public int getMaxMp() {
-    return maxMp;
-  }
 }

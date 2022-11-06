@@ -3,6 +3,7 @@ package cl.uchile.dcc;
 import cl.uchile.dcc.finalreality.exceptions.InvalidStatValueException;
 import cl.uchile.dcc.finalreality.model.character.GameCharacter;
 import cl.uchile.dcc.finalreality.model.character.player.muggles.Thief;
+import cl.uchile.dcc.finalreality.model.weapon.Knife;
 import cl.uchile.dcc.finalreality.model.weapon.Weapon;
 
 import java.util.Random;
@@ -20,9 +21,9 @@ public class TimerExample {
     Random rng = new Random();
     for (int i = 0; i < 10; i++) {
       // Gives a random speed to each character to generate different waiting times
-      var weapon = new Weapon("", 0, rng.nextInt(50));
+      var wencuchillo = new Knife("Cuchillito", 0, rng.nextInt(50));
       var character = new Thief(Integer.toString(i), 10, 10, queue);
-      character.equip(weapon);
+      character.equip(wencuchillo);
       character.waitTurn();
     }
     // Waits for 6 seconds to ensure that all characters have finished waiting
