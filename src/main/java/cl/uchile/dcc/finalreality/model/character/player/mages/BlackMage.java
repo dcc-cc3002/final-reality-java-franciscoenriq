@@ -15,6 +15,7 @@ import java.util.Objects;
 import java.util.concurrent.BlockingQueue;
 
 import cl.uchile.dcc.finalreality.model.character.player.AbstractPlayerCharacter;
+import cl.uchile.dcc.finalreality.model.weapon.Weapon;
 import org.jetbrains.annotations.NotNull;
 
 /**
@@ -24,10 +25,9 @@ import org.jetbrains.annotations.NotNull;
  * @author ~Your name~
  * @version 2.0
  */
-public class BlackMage extends AbstractPlayerCharacter {
+public class BlackMage extends AbstractMage {
 
-  private int currentMp;
-  private final int maxMp;
+
 
   /**
    * Creates a new Black Mage.
@@ -41,23 +41,14 @@ public class BlackMage extends AbstractPlayerCharacter {
    * @param turnsQueue
    *     the queue with the characters waiting for their turn
    */
-  protected BlackMage(final @NotNull String name, final int maxHp, final int defense,
-      int maxMp, final @NotNull BlockingQueue<GameCharacter> turnsQueue)
-      throws InvalidStatValueException {
-    super(name, maxHp, defense, turnsQueue);
-    Require.statValueAtLeast(0, maxMp, "Max MP");
-    this.maxMp = maxMp;
-    this.currentMp = maxMp;
+  public BlackMage(final @NotNull String name, final int maxHp, final int defense,
+                           int maxMp, final @NotNull BlockingQueue<GameCharacter> turnsQueue)
+          throws InvalidStatValueException {
+    super(name, maxHp, defense, maxMp, turnsQueue);
+
   }
 
   // region : ACCESSORS
-
-  /**
-   * Returns the character's current MP.
-   */
-  private int getCurrentMp() {
-    return currentMp;
-  }
 
   /**
    * Sets the character's current MP.
@@ -68,12 +59,7 @@ public class BlackMage extends AbstractPlayerCharacter {
     this.currentMp = currentMp;
   }
 
-  /**
-   * Returns the character's max MP.
-   */
-  private int getMaxMp() {
-    return maxMp;
-  }
+
   // endregion
 
   // region : UTILITY METHODS
@@ -103,4 +89,11 @@ public class BlackMage extends AbstractPlayerCharacter {
     return Objects.hash(BlackMage.class, name, maxHp, defense, maxMp);
   }
   // endregion
+
+  @Override
+  public void equip(Weapon weapon) {
+
+    
+  }
+
 }
