@@ -27,6 +27,8 @@ dependencies {
     implementation("org.openjfx:javafx:18.0.2:pom")
     implementation("org.jetbrains:annotations:23.0.0")
     implementation("org.apache.commons:commons-lang3:3.12.0")
+    implementation("junit:junit:3.8.2")
+    implementation("junit:junit:3.8.2")
     testImplementation("org.junit.jupiter:junit-jupiter-api:5.9.0")
     testRuntimeOnly("org.junit.jupiter:junit-jupiter-engine:5.9.0")
 }
