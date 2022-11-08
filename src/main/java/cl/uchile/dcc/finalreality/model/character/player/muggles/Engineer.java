@@ -15,6 +15,8 @@ import java.util.concurrent.BlockingQueue;
 
 import cl.uchile.dcc.finalreality.model.character.player.AbstractPlayerCharacter;
 import cl.uchile.dcc.finalreality.model.character.player.PlayerCharacter;
+import cl.uchile.dcc.finalreality.model.weapon.Axe;
+import cl.uchile.dcc.finalreality.model.weapon.Bow;
 import org.jetbrains.annotations.NotNull;
 
 
@@ -67,5 +69,13 @@ public class Engineer extends AbstractPlayerCharacter {
         && name.equals(that.name)
         && maxHp == that.maxHp
         && defense == that.defense;
+  }
+
+
+  public void equipAxe(@NotNull Axe axe){
+    axe.equipEngineer(this);
+  }
+  public void equipBow(@NotNull Bow bow){
+    bow.equipEngineer(this);
   }
 }

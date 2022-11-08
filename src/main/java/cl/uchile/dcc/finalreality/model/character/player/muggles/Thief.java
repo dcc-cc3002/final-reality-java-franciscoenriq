@@ -15,6 +15,9 @@ import java.util.concurrent.BlockingQueue;
 
 import cl.uchile.dcc.finalreality.model.character.player.AbstractPlayerCharacter;
 import cl.uchile.dcc.finalreality.model.character.player.PlayerCharacter;
+import cl.uchile.dcc.finalreality.model.weapon.Bow;
+import cl.uchile.dcc.finalreality.model.weapon.Knife;
+import cl.uchile.dcc.finalreality.model.weapon.Sword;
 import org.jetbrains.annotations.NotNull;
 
 /**
@@ -67,5 +70,14 @@ public class Thief extends AbstractPlayerCharacter {
   @Override
   public String toString() {
     return "Thief{maxHp=%d, defense=%d, name='%s'}".formatted(maxHp, defense, name);
+  }
+  public void equipSword(@NotNull Sword sword){
+    sword.equipThief(this);
+  }
+  public void equipKnife(@NotNull Knife knife){
+    knife.equipThief(this);
+  }
+  public void equipBow(@NotNull Bow bow){
+    bow.equipThief(this);
   }
 }

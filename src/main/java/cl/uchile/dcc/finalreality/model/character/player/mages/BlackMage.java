@@ -15,6 +15,7 @@ import java.util.Objects;
 import java.util.concurrent.BlockingQueue;
 
 import cl.uchile.dcc.finalreality.model.character.player.AbstractPlayerCharacter;
+import cl.uchile.dcc.finalreality.model.weapon.Staff;
 import cl.uchile.dcc.finalreality.model.weapon.Weapon;
 import org.jetbrains.annotations.NotNull;
 
@@ -90,10 +91,8 @@ public class BlackMage extends AbstractMage {
   }
   // endregion
 
-  @Override
-  public void equip(Weapon weapon) {
 
-    
+  public void equipStaff(@NotNull Staff staff){
+    staff.equipBlackMage(this);
   }
-
 }

@@ -16,6 +16,8 @@ import java.util.concurrent.BlockingQueue;
 
 import cl.uchile.dcc.finalreality.model.character.player.AbstractPlayerCharacter;
 import cl.uchile.dcc.finalreality.model.character.player.PlayerCharacter;
+import cl.uchile.dcc.finalreality.model.weapon.Knife;
+import cl.uchile.dcc.finalreality.model.weapon.Staff;
 import org.jetbrains.annotations.NotNull;
 
 /**
@@ -77,6 +79,13 @@ public class WhiteMage extends AbstractMage {
     Require.statValueAtLeast(0, newMp, "Current MP");
     Require.statValueAtMost(maxMp, newMp, "Current MP");
     this.currentMp = newMp;
+  }
+
+  public void equipKnife(@NotNull Knife knife){
+    knife.equipWhiteMage(this);
+  }
+  public void equipStaff(@NotNull Staff staff){
+    staff.equipWhiteMage(this);
   }
 
 }
