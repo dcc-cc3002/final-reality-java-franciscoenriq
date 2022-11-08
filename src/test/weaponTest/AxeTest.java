@@ -15,14 +15,49 @@ import static org.junit.jupiter.api.Assertions.*;
         axe1 = new Axe(nameAxe,12,12);
         axe2 = new Axe("hachita",13,42);
     }
-
     @Test
-     public void axeTest(){
-        final Axe axeExpected1 = new Axe("hacha",12,12);
-        final Axe axeExpected2 = new Axe("hachitaa",12,345);
-        assertEquals(axeExpected1,axe1);
+     public void equalsAxe(){
+
+        final Axe axeExpected2 = new Axe("hacha",12,12);
+        assertEquals(axeExpected2,axe1);
         assertNotEquals(axeExpected2,axe2);
     }
+    @Test
+     public void diferentName(){
+        final Axe axeExpected2 = new Axe("hachitaa",12,12);
+        assertNotEquals(axeExpected2,axe1);
+    }
+     @Test
+     public void diferentDamage(){
+         final Axe axeExpected2 = new Axe("hacha",13,12);
+         assertNotEquals(axeExpected2,axe1);
+     }
+     @Test
+     public void diferentWeight(){
+         final Axe axeExpected2 = new Axe("hacha",12,13);
+         assertNotEquals(axeExpected2,axe1);
+     }
+     @Test
+     public void testHashCode(){
+        final Axe axeExpected = new Axe("hacha",12,12);
+        assertEquals(axeExpected.hashCode(),axe1.hashCode());
+        assertNotEquals(axe1.hashCode(),axe2.hashCode());
+     }
+     @Test
+     public void diferentHashCodeName(){
+         final Axe axeExpected2 = new Axe("hachitaa",12,12);
+         assertNotEquals(axeExpected2.hashCode(),axe1.hashCode());
+     }
+     @Test
+     public void diferentHashCodeDamage(){
+         final Axe axeExpected2 = new Axe("hacha",13,12);
+         assertNotEquals(axeExpected2.hashCode(),axe1.hashCode());
+     }
+     @Test
+     public void diferentHashCodeWeight(){
+         final Axe axeExpected2 = new Axe("hacha",12,13);
+         assertNotEquals(axeExpected2,axe1);
+     }
 
 
 }
