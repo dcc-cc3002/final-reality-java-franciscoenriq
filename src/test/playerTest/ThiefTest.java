@@ -3,6 +3,8 @@ package playerTest;
 import cl.uchile.dcc.finalreality.exceptions.InvalidStatValueException;
 import cl.uchile.dcc.finalreality.model.character.GameCharacter;
 import cl.uchile.dcc.finalreality.model.character.player.muggles.Thief;
+import cl.uchile.dcc.finalreality.model.weapon.Bow;
+import cl.uchile.dcc.finalreality.model.weapon.Knife;
 import cl.uchile.dcc.finalreality.model.weapon.Sword;
 import cl.uchile.dcc.finalreality.model.weapon.Weapon;
 import org.junit.jupiter.api.BeforeEach;
@@ -15,10 +17,6 @@ class ThiefTest {
     private Thief thief1;
     private final String thief1Name = "Ladronzuelo";
     private Thief thief2;
-    private Thief thief3;
-    private Thief thief4;
-
-
     @BeforeEach
     public void setUp() throws InterruptedException, InvalidStatValueException {
         BlockingQueue<GameCharacter> queue = new LinkedBlockingQueue<>();
@@ -36,7 +34,6 @@ class ThiefTest {
         assertNotEquals(thief1, thief2);
 
     }
-
     @Test
     public void equalsTest() throws InterruptedException, InvalidStatValueException {
         BlockingQueue<GameCharacter> queue = new LinkedBlockingQueue<>();
@@ -44,13 +41,35 @@ class ThiefTest {
         assertEquals(true, thief1.equals(thief3Expected));
         assertFalse(thief1.equals(thief2));
     }
-
+    //-----------------------------------------------------------------------------------------------
+    //Tests of equipWeapons
     @Test
-    public void equipWeaponTest() {
+    public void equipNullTest(){
         assertNull(thief1.getEquippedWeapon());
-        final Weapon espadita = new Sword("espadita", 12, 12);
-        thief1.equip(espadita);
-        assertNotNull(thief1.getEquippedWeapon());
-
+        assertNull(thief2.getEquippedWeapon());
     }
+    @Test
+    public void equipSwordTest() {
+        Sword sword = new Sword("espada",34,23);
+        thief1.equipSword(sword);
+        assertNotNull(thief1.getEquippedWeapon());
+        assertEquals(sword.hashCode(),(thief1.getEquippedWeapon()).hashCode());
+    }
+    @Test
+    public void equipKnifeTest(){
+        Knife knife = new Knife("cuchillo",34,56);
+        thief1.equipKnife(knife);
+        assertNotNull(thief1.getEquippedWeapon());
+        assertEquals(knife.hashCode(),(thief1.getEquippedWeapon()).hashCode());
+    }
+    @Test
+    public void equipBowTest(){
+        Bow bow = new Bow("arco",34,23);
+        thief1.equipBow(bow);
+        assertNotNull(thief1.getEquippedWeapon());
+        assertEquals(bow.hashCode(),(thief1.getEquippedWeapon()).hashCode());
+    }
+    //-----------------------------------------------------------------------------------------------
+
+
 }
