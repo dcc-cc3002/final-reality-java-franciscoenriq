@@ -95,4 +95,5 @@ public class BlackMage extends AbstractMage {
   public void equipStaff(@NotNull Staff staff){
     staff.equipBlackMage(this);
   }
+
 }

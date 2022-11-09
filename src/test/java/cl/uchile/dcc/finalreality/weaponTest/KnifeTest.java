@@ -1,4 +1,4 @@
-package weaponTest;
+package cl.uchile.dcc.finalreality.weaponTest;
 import cl.uchile.dcc.finalreality.model.weapon.Bow;
 import cl.uchile.dcc.finalreality.model.weapon.Knife;
 import org.junit.jupiter.api.BeforeEach;

@@ -1,4 +1,4 @@
-package playerTest;
+package cl.uchile.dcc.finalreality.playerTest;
 import cl.uchile.dcc.finalreality.exceptions.InvalidStatValueException;
 import cl.uchile.dcc.finalreality.model.character.GameCharacter;
 import cl.uchile.dcc.finalreality.model.character.player.mages.BlackMage;
