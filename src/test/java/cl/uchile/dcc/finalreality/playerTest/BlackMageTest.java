@@ -22,8 +22,6 @@ public class BlackMageTest {
         blackMage2 = new BlackMage("magonegrito",45,23,14,queue);
 
     }
-
-
     @Test
     public void equipNullTest(){
         assertNull(blackMage2.getEquippedWeapon());

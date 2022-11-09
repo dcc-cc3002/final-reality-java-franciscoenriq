@@ -1,6 +1,7 @@
 package cl.uchile.dcc.finalreality.weaponTest;
 import cl.uchile.dcc.finalreality.model.weapon.Axe;
 import cl.uchile.dcc.finalreality.model.weapon.Bow;
+import cl.uchile.dcc.finalreality.model.weapon.Knife;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -60,6 +61,13 @@ public class BowTest {
     public void diferentHashCodeWeight(){
         final Bow bowExpected1 = new Bow("arco",12,12);
         assertNotEquals(bowExpected1.hashCode(),bow1.hashCode());
+    }
+    @Test
+    public void testEquals(){
+        final Bow bowExpected1 = new Bow(nameBow,12,12);
+        assertEquals(false, bow1.equals(bow2));
+        assertEquals(true,bow1.equals(bowExpected1));
+
     }
     //-------------------------------------------------------------------------------------
 }

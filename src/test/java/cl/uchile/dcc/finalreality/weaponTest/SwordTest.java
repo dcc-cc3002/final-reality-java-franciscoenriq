@@ -4,8 +4,7 @@ import cl.uchile.dcc.finalreality.model.weapon.Sword;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertNotEquals;
+import static org.junit.jupiter.api.Assertions.*;
 
 public class SwordTest {
     private Sword sword1;
@@ -18,6 +17,9 @@ public class SwordTest {
     }
 
     // --------------------------------------------------------------------------------------
+    /*
+    testing of constructors
+     */
     @Test
     public void equalsSword(){
         final Sword swordExpected1 = new Sword("espada",12,12);
@@ -40,6 +42,9 @@ public class SwordTest {
         assertNotEquals(swordExpected1,sword1);
     }
     //------------------------------------------------------------------------------
+    /*
+    testing of the hashcode method
+     */
     @Test
     public void testHashCode(){
         final Sword swordExpected1 = new Sword("espada",12,12);
@@ -65,4 +70,15 @@ public class SwordTest {
         assertNotEquals(swordExpected1.hashCode(),sword1.hashCode());
     }
     //-------------------------------------------------------------------------------------
+    //in this point i dicided to do the test more simplificate
+    @Test
+    public void testEquals(){
+        final Sword swordExpected1 = new Sword("espada",1567,1456);
+        final Sword swordExpected2= new Sword(nameBow,12,12);
+        assertEquals(false, sword1.equals(swordExpected1));
+        assertEquals(true,sword1.equals(swordExpected2));
+
+    }
+
+
 }

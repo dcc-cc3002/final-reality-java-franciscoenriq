@@ -1,6 +1,7 @@
 package cl.uchile.dcc.finalreality.weaponTest;
 
 import cl.uchile.dcc.finalreality.model.weapon.Axe;
+import cl.uchile.dcc.finalreality.model.weapon.Bow;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import java.util.concurrent.BlockingQueue;
@@ -58,6 +59,16 @@ import static org.junit.jupiter.api.Assertions.*;
          final Axe axeExpected2 = new Axe("hacha",12,13);
          assertNotEquals(axeExpected2,axe1);
      }
+     @Test
+     public void testEquals(){
+         final Axe axeExpected1 = new Axe(nameAxe,12,12);
+         assertEquals(false, axe1.equals(axe2));
+         assertEquals(true,axe1.equals(axeExpected1));
+
+     }
+
+
+
 
 
 }

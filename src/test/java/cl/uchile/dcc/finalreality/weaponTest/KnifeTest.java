@@ -1,6 +1,7 @@
 package cl.uchile.dcc.finalreality.weaponTest;
 import cl.uchile.dcc.finalreality.model.weapon.Bow;
 import cl.uchile.dcc.finalreality.model.weapon.Knife;
+import cl.uchile.dcc.finalreality.model.weapon.Staff;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -62,4 +63,12 @@ public class KnifeTest {
         assertNotEquals(knifeExpected1.hashCode(),knife1.hashCode());
     }
     //-------------------------------------------------------------------------------------
+
+    @Test
+    public void testEquals(){
+        final Knife knifeExpected1 = new Knife(nameKnife,12,12);
+        assertEquals(false, knife1.equals(knife2));
+        assertEquals(true,knife1.equals(knifeExpected1));
+
+    }
 }

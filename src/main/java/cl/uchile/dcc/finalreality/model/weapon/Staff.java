@@ -30,8 +30,6 @@ public class Staff extends Weapon {
         return "Weapon{name='%s', damage=%d, weight=%d, magicDamage=%d}"
                 .formatted(getName(), getDamage(), getWeight(),magicDamage);
     }
-
-
     public void equipWhiteMage(@NotNull WhiteMage whiteMage){ whiteMage.equip(this);}
     public void equipBlackMage(@NotNull BlackMage blackMage){blackMage.equip(this);}
 
