@@ -4,6 +4,11 @@ import cl.uchile.dcc.finalreality.exceptions.InvalidStatValueException;
 import cl.uchile.dcc.finalreality.exceptions.Require;
 import java.util.Objects;
 import java.util.concurrent.BlockingQueue;
+import java.util.concurrent.Executors;
+import java.util.concurrent.ScheduledExecutorService;
+import java.util.concurrent.TimeUnit;
+
+import cl.uchile.dcc.finalreality.model.character.player.PlayerCharacter;
 import org.jetbrains.annotations.NotNull;
 
 /**
@@ -54,4 +59,25 @@ public class Enemy extends AbstractCharacter {
   public int hashCode() {
     return Objects.hash(Enemy.class, name, weight, maxHp, defense);
   }
-}
+
+  private void addToQueueEnemy() {
+    try {
+      turnsQueue.put(this);
+    } catch (Exception e) {
+      e.printStackTrace();
+    }
+    scheduledExecutor.shutdown();
+  }
+  @Override
+  public void waitTurn() {
+    scheduledExecutor = Executors.newSingleThreadScheduledExecutor();
+
+      var enemy = (Enemy) this;
+      scheduledExecutor.schedule(
+              /* command = */ this::addToQueueEnemy,
+              /* delay = */ enemy.getWeight() / 10,
+              /* unit = */ TimeUnit.SECONDS);
+    }
+  }
+
+

@@ -23,6 +23,16 @@ public class EngineerTest {
     }
 
     @Test
+    public void HashCodeTest()throws InterruptedException, InvalidStatValueException {
+        BlockingQueue<GameCharacter> queue = new LinkedBlockingQueue<>();
+        Engineer engineerExpected= new Engineer("ingeniero",100,20,queue);
+
+        assertEquals(engineerExpected.hashCode(),engineer1.hashCode());
+
+    }
+
+
+    @Test
     public void equipNullTest(){
         assertNull(engineer1.getEquippedWeapon());
         assertNull(engineer2.getEquippedWeapon());
