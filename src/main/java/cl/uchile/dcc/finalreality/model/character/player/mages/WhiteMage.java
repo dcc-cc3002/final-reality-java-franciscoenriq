@@ -75,7 +75,7 @@ public class WhiteMage extends AbstractMage {
   /**
    * Sets the current MP of the character to {@code newMp}.
    */
-  public void setCurrentMp(final int newMp) throws InvalidStatValueException {
+  private void setCurrentMp(final int newMp) throws InvalidStatValueException {
     Require.statValueAtLeast(0, newMp, "Current MP");
     Require.statValueAtMost(maxMp, newMp, "Current MP");
     this.currentMp = newMp;

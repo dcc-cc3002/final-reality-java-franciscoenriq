@@ -59,11 +59,6 @@ public class WhiteMageTest {
         assertEquals(whiteMage1.toString(),whiteMageExpected1.toString());
         assertNotEquals(whiteMage2.toString(),whiteMageExpected1.toString());
     }
-    @Test
-    public void setCurrentMp() throws InvalidStatValueException{
-        whiteMage1.setCurrentMp(23);
-        int currentMpExpected = 23;
-        assertEquals(whiteMage1.getCurrentMp(),currentMpExpected);
-    }
+
 
 }

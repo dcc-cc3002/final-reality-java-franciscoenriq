@@ -46,3 +46,8 @@ directamente.
 Para los tests se hicieron clases para cada una de los entes del juego(o en su mayoría) en un principio se me fue la on-
 da con los tests , testeando cada variable para cada metodo, como para el equals o el hashCode. Luego de eso empecé a
 hacer menos extensivos los códigos. 
+
+
+OJO : el método setCurrentHp quedó publico para que no tirara error , no alcancé a pillar porque no me deja colocarlo privado. 
+lo habia dejado publico en un momento en un momento para poder testearlo pero al parecer es mala practica que este 
+metodo quede publico. 
