@@ -22,8 +22,6 @@ public class AbstractMage extends AbstractPlayerCharacter {
         this.currentMp = maxMp;
     }
 
-
-
     /**
      * The nexts methods are the getters of current and max Mp
      * Returns the current MP of the character.

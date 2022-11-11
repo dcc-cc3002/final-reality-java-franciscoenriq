@@ -4,7 +4,7 @@ import cl.uchile.dcc.finalreality.model.character.player.muggles.Knight;
 import cl.uchile.dcc.finalreality.model.character.player.muggles.Thief;
 import org.jetbrains.annotations.NotNull;
 
-public class Sword extends Weapon{
+public class Sword extends AbstractWeapon {
 
     public Sword(final String name, final int damage, final int weight){
         super(name,damage,weight);

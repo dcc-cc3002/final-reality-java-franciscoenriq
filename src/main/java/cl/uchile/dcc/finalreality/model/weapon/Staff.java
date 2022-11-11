@@ -6,7 +6,7 @@ import org.jetbrains.annotations.NotNull;
 
 import java.util.Objects;
 
-public class Staff extends Weapon {
+public class Staff extends AbstractWeapon {
     private final int magicDamage;
 
     public Staff(final String name, final int damage, final int weight, final int magicDamage) {
@@ -22,7 +22,7 @@ public class Staff extends Weapon {
 
     @Override
     public int hashCode() {
-        return Objects.hash(Weapon.class, getName(), getDamage(), getWeight(), getMagicdamage());
+        return Objects.hash(AbstractWeapon.class, getName(), getDamage(), getWeight(), getMagicdamage());
     }
 
     @Override

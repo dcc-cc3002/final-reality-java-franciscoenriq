@@ -71,11 +71,9 @@ public class Enemy extends AbstractCharacter {
   @Override
   public void waitTurn() {
     scheduledExecutor = Executors.newSingleThreadScheduledExecutor();
-
-      var enemy = (Enemy) this;
       scheduledExecutor.schedule(
               /* command = */ this::addToQueueEnemy,
-              /* delay = */ enemy.getWeight() / 10,
+              /* delay = */ this.getWeight() / 10,
               /* unit = */ TimeUnit.SECONDS);
     }
   }

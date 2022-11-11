@@ -55,12 +55,12 @@ public class BowTest {
     @Test
     public void diferentHashCodeDamage(){
         final Bow bowExpected1 = new Bow("arco",12,12);
-        assertNotEquals(bowExpected1.hashCode(),bow1.hashCode());
+        assertNotEquals(bowExpected1.hashCode(),bow2.hashCode());
     }
     @Test
     public void diferentHashCodeWeight(){
         final Bow bowExpected1 = new Bow("arco",12,12);
-        assertNotEquals(bowExpected1.hashCode(),bow1.hashCode());
+        assertNotEquals(bowExpected1.hashCode(),bow2.hashCode());
     }
     @Test
     public void testEquals(){

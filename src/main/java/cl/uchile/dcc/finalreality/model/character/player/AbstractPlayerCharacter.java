@@ -10,12 +10,10 @@ package cl.uchile.dcc.finalreality.model.character.player;
 
 import cl.uchile.dcc.finalreality.exceptions.InvalidStatValueException;
 import cl.uchile.dcc.finalreality.model.character.AbstractCharacter;
-import cl.uchile.dcc.finalreality.model.character.Enemy;
 import cl.uchile.dcc.finalreality.model.character.GameCharacter;
-import cl.uchile.dcc.finalreality.model.weapon.Weapon;
+import cl.uchile.dcc.finalreality.model.weapon.AbstractWeapon;
 import java.util.concurrent.BlockingQueue;
 import java.util.concurrent.Executors;
-import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.TimeUnit;
 
 import org.jetbrains.annotations.NotNull;
@@ -25,7 +23,7 @@ import org.jetbrains.annotations.NotNull;
  *
  * <p>All player characters have a {@code name}, a maximum amount of <i>hit points</i>
  * ({@code maxHp}), a {@code defense} value, a queue of {@link GameCharacter}s that are
- * waiting for their turn ({@code turnsQueue}), and can equip a {@link Weapon}.
+ * waiting for their turn ({@code turnsQueue}), and can equip a {@link AbstractWeapon}.
  *
  * @author <a href="https://www.github.com/r8vnhill">R8V</a>
  * @author ~Your name~
@@ -33,7 +31,7 @@ import org.jetbrains.annotations.NotNull;
 public abstract class AbstractPlayerCharacter extends AbstractCharacter implements
     PlayerCharacter {
 
-  private Weapon equippedWeapon = null;
+  private AbstractWeapon equippedWeapon = null;
 
   /**
    * Creates a new character.
@@ -58,12 +56,12 @@ public abstract class AbstractPlayerCharacter extends AbstractCharacter implemen
   }
 
   @Override
-  public void equip(Weapon weapon) {
+  public void equip(AbstractWeapon weapon) {
     this.equippedWeapon = weapon;
   }
 
   @Override
-  public Weapon getEquippedWeapon() {
+  public AbstractWeapon getEquippedWeapon() {
     return equippedWeapon;
   }
 
@@ -78,10 +76,10 @@ public abstract class AbstractPlayerCharacter extends AbstractCharacter implemen
 
   public void waitTurn() {
     scheduledExecutor = Executors.newSingleThreadScheduledExecutor();
-    var player = (AbstractPlayerCharacter) this;
+
       scheduledExecutor.schedule(
               /* command = */ this::addToQueuePlayer,
-              /* delay = */ player.getEquippedWeapon().getWeight() / 10,
+              /* delay = */ this.getEquippedWeapon().getWeight() / 10,
               /* unit = */ TimeUnit.SECONDS);
 
   }

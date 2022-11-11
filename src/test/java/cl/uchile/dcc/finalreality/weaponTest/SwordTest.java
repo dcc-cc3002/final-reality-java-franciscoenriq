@@ -12,7 +12,7 @@ public class SwordTest {
     private final String nameBow = "espada";
     @BeforeEach
     public void setUp(){
-        sword1 = new Sword(nameBow,12,12);
+        sword1 = new Sword("espada",12,12);
         sword2 = new Sword("espadita",13,42);
     }
 
@@ -49,26 +49,10 @@ public class SwordTest {
     public void testHashCode(){
         final Sword swordExpected1 = new Sword("espada",12,12);
         assertEquals(swordExpected1.hashCode(),sword1.hashCode());
-        assertNotEquals(swordExpected1.hashCode(),sword1.hashCode());
+        assertNotEquals(swordExpected1.hashCode(),sword2.hashCode());
     }
-    @Test
-    public void diferentHashCodeName(){
-        final Sword swordExpected1 = new Sword("espadita",12,12);
-        assertEquals(swordExpected1.hashCode(),sword1.hashCode());
-        assertNotEquals(swordExpected1.hashCode(),sword1.hashCode());
-    }
-    @Test
-    public void diferentHashCodeDamage(){
-        final Sword swordExpected1 = new Sword("espada",13,12);
-        assertEquals(swordExpected1.hashCode(),sword1.hashCode());
-        assertNotEquals(swordExpected1.hashCode(),sword1.hashCode());
-    }
-    @Test
-    public void diferentHashCodeWeight(){
-        final Sword swordExpected1 = new Sword("espada",12,16);
-        assertEquals(swordExpected1.hashCode(),sword1.hashCode());
-        assertNotEquals(swordExpected1.hashCode(),sword1.hashCode());
-    }
+
+
     //-------------------------------------------------------------------------------------
     //in this point i dicided to do the test more simplificate
     @Test

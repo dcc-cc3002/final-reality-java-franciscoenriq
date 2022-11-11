@@ -14,9 +14,7 @@ import cl.uchile.dcc.finalreality.model.character.GameCharacter;
 import java.util.Objects;
 import java.util.concurrent.BlockingQueue;
 
-import cl.uchile.dcc.finalreality.model.character.player.AbstractPlayerCharacter;
 import cl.uchile.dcc.finalreality.model.weapon.Staff;
-import cl.uchile.dcc.finalreality.model.weapon.Weapon;
 import org.jetbrains.annotations.NotNull;
 
 /**
@@ -54,7 +52,7 @@ public class BlackMage extends AbstractMage {
   /**
    * Sets the character's current MP.
    */
-  private void setCurrentMp(final int currentMp) throws InvalidStatValueException {
+  public void setCurrentMp(final int currentMp) throws InvalidStatValueException {
     Require.statValueAtLeast(0, currentMp, "Current MP");
     Require.statValueAtMost(maxMp, currentMp, "Current MP");
     this.currentMp = currentMp;

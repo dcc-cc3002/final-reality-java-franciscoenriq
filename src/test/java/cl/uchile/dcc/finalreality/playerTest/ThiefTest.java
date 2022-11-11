@@ -6,7 +6,6 @@ import cl.uchile.dcc.finalreality.model.character.player.muggles.Thief;
 import cl.uchile.dcc.finalreality.model.weapon.Bow;
 import cl.uchile.dcc.finalreality.model.weapon.Knife;
 import cl.uchile.dcc.finalreality.model.weapon.Sword;
-import cl.uchile.dcc.finalreality.model.weapon.Weapon;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import java.util.concurrent.BlockingQueue;
@@ -69,6 +68,14 @@ class ThiefTest {
         assertNotNull(thief1.getEquippedWeapon());
         assertEquals(bow.hashCode(),(thief1.getEquippedWeapon()).hashCode());
     }
+    @Test
+    public void toStringTest()throws InterruptedException, InvalidStatValueException {
+        BlockingQueue<GameCharacter> queue = new LinkedBlockingQueue<>();
+        Thief thief1Expected = new Thief("Ladronzuelo", 23, 34, queue);
+        assertEquals(thief1Expected.toString(),thief1.toString());
+
+    }
+
     //-----------------------------------------------------------------------------------------------
 
 

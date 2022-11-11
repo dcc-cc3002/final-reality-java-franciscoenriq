@@ -2,6 +2,7 @@ package cl.uchile.dcc.finalreality.playerTest;
 import cl.uchile.dcc.finalreality.exceptions.InvalidStatValueException;
 import cl.uchile.dcc.finalreality.model.character.GameCharacter;
 import cl.uchile.dcc.finalreality.model.character.player.mages.WhiteMage;
+import cl.uchile.dcc.finalreality.model.character.player.muggles.Engineer;
 import cl.uchile.dcc.finalreality.model.weapon.Knife;
 import cl.uchile.dcc.finalreality.model.weapon.Staff;
 import org.junit.jupiter.api.BeforeEach;
@@ -42,4 +43,27 @@ public class WhiteMageTest {
         assertNotNull(whiteMage1.getEquippedWeapon());
         assertEquals(staff.hashCode(),(whiteMage1.getEquippedWeapon()).hashCode());
     }
+
+    @Test
+    public void equalsTest()throws InterruptedException, InvalidStatValueException {
+        BlockingQueue<GameCharacter> queue = new LinkedBlockingQueue<>();
+        WhiteMage whiteMageExpected1 = new WhiteMage("magoblanco",34,45,23,queue);
+        assertTrue(whiteMage1.equals(whiteMageExpected1));
+        assertFalse(whiteMage2.equals(whiteMageExpected1));
+    }
+
+    @Test
+    public void toStringTest()throws InterruptedException, InvalidStatValueException {
+        BlockingQueue<GameCharacter> queue = new LinkedBlockingQueue<>();
+        WhiteMage whiteMageExpected1 = new WhiteMage("magoblanco",34,45,23,queue);
+        assertEquals(whiteMage1.toString(),whiteMageExpected1.toString());
+        assertNotEquals(whiteMage2.toString(),whiteMageExpected1.toString());
+    }
+    @Test
+    public void setCurrentMp() throws InvalidStatValueException{
+        whiteMage1.setCurrentMp(23);
+        int currentMpExpected = 23;
+        assertEquals(whiteMage1.getCurrentMp(),currentMpExpected);
+    }
+
 }

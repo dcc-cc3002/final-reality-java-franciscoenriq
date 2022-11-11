@@ -51,4 +51,21 @@ public class EngineerTest {
         assertNotNull(engineer1.getEquippedWeapon());
         assertEquals(bow.hashCode(),(engineer1.getEquippedWeapon()).hashCode());
     }
+
+    @Test
+    public void equalsTest()throws InterruptedException, InvalidStatValueException {
+        BlockingQueue<GameCharacter> queue = new LinkedBlockingQueue<>();
+        Engineer engineerExpected1 = new Engineer("ingeniero",100,20,queue);
+        assertTrue(engineer1.equals(engineerExpected1));
+        assertFalse(engineer1.equals(engineer2));
+    }
+
+    @Test
+    public void toStringTest()throws InterruptedException, InvalidStatValueException {
+        BlockingQueue<GameCharacter> queue = new LinkedBlockingQueue<>();
+        Engineer engineerExpected1 = new Engineer("ingeniero",100,20,queue);
+        assertEquals(engineerExpected1.toString(),engineer1.toString());
+        assertNotEquals(engineerExpected1.toString(),engineer2.toString());
+    }
+
 }

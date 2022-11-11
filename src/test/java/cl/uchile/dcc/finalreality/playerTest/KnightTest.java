@@ -50,4 +50,22 @@ public class KnightTest {
         assertEquals(knife.hashCode(),(knight1.getEquippedWeapon()).hashCode());
     }
 
+    @Test
+    public void equalsTest() throws InterruptedException, InvalidStatValueException {
+        BlockingQueue<GameCharacter> queue = new LinkedBlockingQueue<>();
+
+        Knight knightExpected1 = new Knight("caballero",12,12,queue);
+        assertTrue(knight1.equals(knightExpected1));
+        assertFalse(knight1.equals(knight2));
+
+    }
+    @Test
+    public void toStringTest() throws InterruptedException, InvalidStatValueException {
+        BlockingQueue<GameCharacter> queue = new LinkedBlockingQueue<>();
+        Knight knightExpected1 = new Knight("caballero",12,12,queue);
+        assertEquals(knightExpected1.toString(),knight1.toString());
+        assertNotEquals(knight1.toString(),knight2.toString());
+
+    }
+
 }

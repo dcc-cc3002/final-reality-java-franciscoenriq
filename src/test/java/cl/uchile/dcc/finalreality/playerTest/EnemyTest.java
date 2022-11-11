@@ -62,7 +62,7 @@ public class EnemyTest {
     @Test
     public void testHasCode() throws InterruptedException, InvalidStatValueException{
         BlockingQueue<GameCharacter> queue = new LinkedBlockingQueue<>();
-        final Enemy expectedMonster1 = new Enemy("enemy1",13,34,45,queue);
+        final Enemy expectedMonster1 = new Enemy("enemy1",12,34,45,queue);
         assertEquals(expectedMonster1.hashCode(),monster1.hashCode());
     }
     @Test
@@ -90,5 +90,20 @@ public class EnemyTest {
         assertNotEquals(expectedMonster1.hashCode(),monster1.hashCode());
     }
 
+    @Test
+    public void equalsTest() throws InterruptedException, InvalidStatValueException{
+        BlockingQueue<GameCharacter> queue = new LinkedBlockingQueue<>();
+        final Enemy expectedMonster1 = new Enemy("enemy1",12,34,45,queue);
+
+        assertTrue(monster1.equals(expectedMonster1));
+        assertFalse(monster1.equals(monster2));
+
+    }
+
+    @Test
+    public void gettWeightTest(){
+        final int weightExpected = 12;
+        assertEquals(weightExpected,monster1.getWeight());
+    }
 
 }

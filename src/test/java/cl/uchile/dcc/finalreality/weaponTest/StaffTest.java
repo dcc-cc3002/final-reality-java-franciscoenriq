@@ -23,7 +23,7 @@ public class StaffTest {
     public void setUp() throws InterruptedException, InvalidStatValueException {
         BlockingQueue<GameCharacter> queue = new LinkedBlockingQueue<>();
         whiteMage1 = new WhiteMage("magoblanco",34,45,23,queue);
-        staff1 = new Staff(nameStaff,12,12,12);
+        staff1 = new Staff("baston",12,12,12);
         staff2 = new Staff("bastoncito",13,42,34);
     }
 
@@ -32,7 +32,7 @@ public class StaffTest {
     public void equalsStaff(){
         final Staff staffExpected1 = new Staff("baston",12,12,12);
         assertEquals(staffExpected1,staff1);
-        assertNotEquals(staff2,staff2);
+        assertNotEquals(staff1,staff2);
     }
     @Test
     public void diferentName(){
