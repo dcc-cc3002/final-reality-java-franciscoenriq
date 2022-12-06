@@ -7,6 +7,8 @@ import java.util.concurrent.BlockingQueue;
 import java.util.concurrent.Executors;
 import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.TimeUnit;
+import cl.uchile.dcc.finalreality.model.character.EnemyStates.AbstractState;
+
 
 import cl.uchile.dcc.finalreality.model.character.player.PlayerCharacter;
 import org.jetbrains.annotations.NotNull;
@@ -20,6 +22,7 @@ import org.jetbrains.annotations.NotNull;
 public class Enemy extends AbstractCharacter {
 
   private final int weight;
+  private AbstractState state;
 
   /**
    * Creates a new enemy with a name, a weight and the queue with the characters ready to
@@ -31,6 +34,7 @@ public class Enemy extends AbstractCharacter {
     super(name, maxHp, defense, turnsQueue);
     Require.statValueAtLeast(1, weight, "Weight");
     this.weight = weight;
+    this.state = null;
   }
 
   /**
@@ -40,6 +44,9 @@ public class Enemy extends AbstractCharacter {
     return weight;
   }
 
+  public AbstractState getState() {return state;}
+
+  public void setState(AbstractState currentState){this.state =currentState;}
   @Override
   public boolean equals(final Object o) {
     if (this == o) {

@@ -1,4 +1,6 @@
 package cl.uchile.dcc.finalreality.playerTest;
+import cl.uchile.dcc.finalreality.model.character.Enemy;
+
 import cl.uchile.dcc.finalreality.exceptions.InvalidStatValueException;
 import cl.uchile.dcc.finalreality.model.character.GameCharacter;
 import cl.uchile.dcc.finalreality.model.character.player.mages.BlackMage;
@@ -14,14 +16,16 @@ import static org.junit.jupiter.api.Assertions.*;
 public class BlackMageTest {
     private BlackMage blackMage1;
     private BlackMage blackMage2;
+    private BlackMage blackMage3;
 
-
+    private Enemy enemy ;
     @BeforeEach
     public void setUp() throws InterruptedException, InvalidStatValueException {
         BlockingQueue<GameCharacter> queue = new LinkedBlockingQueue<>();
         blackMage1 = new BlackMage("magonegro",12,34,45,queue);
         blackMage2 = new BlackMage("magonegrito",45,23,14,queue);
-
+        blackMage3 = new BlackMage("magordito",90,40,60,queue);
+        enemy = new Enemy("chamaquito",40,60,40,queue);
     }
     @Test
     public void equipNullTest(){
@@ -65,4 +69,6 @@ public class BlackMageTest {
          int currentMpExpected = 23;
         assertEquals(blackMage1.getCurrentMp(),currentMpExpected);
     }
+    //using magic
+
 }

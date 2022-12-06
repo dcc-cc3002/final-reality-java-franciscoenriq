@@ -45,6 +45,7 @@ public abstract class AbstractCharacter implements GameCharacter {
     this.defense = defense;
     this.turnsQueue = turnsQueue;
     this.name = name;
+
   }
 
 
@@ -76,10 +77,9 @@ public abstract class AbstractCharacter implements GameCharacter {
 
   @Override
   public void setCurrentHp(int hp) throws InvalidStatValueException {
-
-
     Require.statValueAtLeast(0, hp, "Current HP");
     Require.statValueAtMost(maxHp, hp, "Current HP");
     currentHp = hp;
   }
+
 }

@@ -4,6 +4,8 @@ import cl.uchile.dcc.finalreality.exceptions.InvalidStatValueException;
 import cl.uchile.dcc.finalreality.exceptions.Require;
 import cl.uchile.dcc.finalreality.model.character.GameCharacter;
 import cl.uchile.dcc.finalreality.model.character.player.AbstractPlayerCharacter;
+import cl.uchile.dcc.finalreality.model.weapon.AbstractMagicWeapons;
+import cl.uchile.dcc.finalreality.model.weapon.AbstractWeapon;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.concurrent.BlockingQueue;
@@ -13,6 +15,7 @@ public class AbstractMage extends AbstractPlayerCharacter {
     public int currentMp;
     public final int maxMp;
 
+
     protected AbstractMage(final @NotNull String name, final int maxHp, final int defense,
                         int maxMp, final @NotNull BlockingQueue<GameCharacter> turnsQueue)
             throws InvalidStatValueException {
@@ -20,6 +23,7 @@ public class AbstractMage extends AbstractPlayerCharacter {
         Require.statValueAtLeast(0, maxMp, "Max MP");
         this.maxMp = maxMp;
         this.currentMp = maxMp;
+
     }
 
     /**
@@ -35,4 +39,11 @@ public class AbstractMage extends AbstractPlayerCharacter {
         return maxMp;
     }
 
+
+
+    public void setCurrentMp(int mana) throws InvalidStatValueException{
+        Require.statValueAtLeast(0,mana,"Current Mp");
+        Require.statValueAtMost(maxMp,mana,"Current Mp");
+        currentMp = mana;
+    }
 }

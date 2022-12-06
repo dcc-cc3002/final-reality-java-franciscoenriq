@@ -1,5 +1,6 @@
 package cl.uchile.dcc.finalreality.playerTest;
 import cl.uchile.dcc.finalreality.exceptions.InvalidStatValueException;
+import cl.uchile.dcc.finalreality.model.character.Enemy;
 import cl.uchile.dcc.finalreality.model.character.GameCharacter;
 import cl.uchile.dcc.finalreality.model.character.player.mages.WhiteMage;
 import cl.uchile.dcc.finalreality.model.character.player.muggles.Engineer;
@@ -16,12 +17,16 @@ public class WhiteMageTest {
 
     private WhiteMage whiteMage1;
     private WhiteMage whiteMage2;
+    private WhiteMage whiteMage3;
+    private Enemy enemy;
 
     @BeforeEach
     public void setUp() throws InterruptedException, InvalidStatValueException {
         BlockingQueue<GameCharacter> queue = new LinkedBlockingQueue<>();
         whiteMage1 = new WhiteMage("magoblanco",34,45,23,queue);
         whiteMage2 = new WhiteMage("magoblanquito",45,23,12,queue);
+        whiteMage3 = new WhiteMage("magorditoblanco",100,30,80,queue);
+        enemy = new Enemy("soymalo",30,80,40,queue);
     }
 
     @Test
@@ -60,5 +65,14 @@ public class WhiteMageTest {
         assertNotEquals(whiteMage2.toString(),whiteMageExpected1.toString());
     }
 
+    public void usingMagic() throws InvalidStatValueException{
+        Staff staff = new Staff("baston",34,23,65);
+        whiteMage3.equipStaff(staff);
+        whiteMage3.usePoison(enemy);
+        assertNotEquals(enemy.getState(),null);
+
+
+
+    }
 
 }

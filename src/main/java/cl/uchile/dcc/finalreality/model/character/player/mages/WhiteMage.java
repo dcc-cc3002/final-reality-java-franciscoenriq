@@ -10,6 +10,8 @@ package cl.uchile.dcc.finalreality.model.character.player.mages;
 
 import cl.uchile.dcc.finalreality.exceptions.InvalidStatValueException;
 import cl.uchile.dcc.finalreality.exceptions.Require;
+import cl.uchile.dcc.finalreality.model.character.EnemyStates.Paralyzed;
+import cl.uchile.dcc.finalreality.model.character.EnemyStates.Poisoned;
 import cl.uchile.dcc.finalreality.model.character.GameCharacter;
 import java.util.Objects;
 import java.util.concurrent.BlockingQueue;
@@ -19,8 +21,10 @@ import cl.uchile.dcc.finalreality.model.character.player.PlayerCharacter;
 import cl.uchile.dcc.finalreality.model.weapon.Knife;
 import cl.uchile.dcc.finalreality.model.weapon.Staff;
 import org.jetbrains.annotations.NotNull;
-
-/**
+import cl.uchile.dcc.finalreality.model.character.EnemyStates.AbstractState;
+import cl.uchile.dcc.finalreality.model.character.Enemy;
+import cl.uchile.dcc.finalreality.model.character.EnemyStates.Poisoned;
+/**;
  * A {@link PlayerCharacter} that can equip {@code Staff}s and use <i>white magic</i>.
  *
  * @author <a href="https://www.github.com/r8vnhill">R8V</a>
@@ -39,6 +43,8 @@ public class WhiteMage extends AbstractMage {
    * @param turnsQueue
    *     the queue with the characters waiting for their turn
    */
+  Poisoned poisoned;
+  Paralyzed paralyzed;
   public WhiteMage(final @NotNull String name, final int maxHp, final int defense,
                    int maxMp, final @NotNull BlockingQueue<GameCharacter> turnsQueue)
           throws InvalidStatValueException {
@@ -75,11 +81,7 @@ public class WhiteMage extends AbstractMage {
   /**
    * Sets the current MP of the character to {@code newMp}.
    */
-  private void setCurrentMp(final int newMp) throws InvalidStatValueException {
-    Require.statValueAtLeast(0, newMp, "Current MP");
-    Require.statValueAtMost(maxMp, newMp, "Current MP");
-    this.currentMp = newMp;
-  }
+
 
   public void equipKnife(@NotNull Knife knife){
     knife.equipWhiteMage(this);
@@ -88,4 +90,28 @@ public class WhiteMage extends AbstractMage {
     staff.equipWhiteMage(this);
   }
 
+
+  public void useHealing(@NotNull AbstractPlayerCharacter jugador) throws InvalidStatValueException {
+
+    this.setCurrentMp(this.getCurrentMp() - 15);
+    int a = jugador.getMaxHp()/5;
+    if (a + jugador.getCurrentHp() > jugador.getMaxHp()) {
+      jugador.setCurrentHp(jugador.getMaxHp());
+    }
+    else{
+      jugador.setCurrentHp(jugador.getCurrentHp()+a);
+     }
+    }
+    // TODO setear vida del jugador
+
+  public void usePoison(@NotNull Enemy enemy) throws InvalidStatValueException {
+
+    this.setCurrentMp(this.getCurrentMp()-40);
+    enemy.setState(poisoned);
+
+  }
+  public void useParalis(@NotNull Enemy enemy) throws InvalidStatValueException {
+    this.setCurrentMp(this.getCurrentMp() - 25);
+    enemy.setState(paralyzed);
+  }
 }

@@ -11,6 +11,7 @@ package cl.uchile.dcc.finalreality.model.character.player;
 import cl.uchile.dcc.finalreality.exceptions.InvalidStatValueException;
 import cl.uchile.dcc.finalreality.model.character.AbstractCharacter;
 import cl.uchile.dcc.finalreality.model.character.GameCharacter;
+import cl.uchile.dcc.finalreality.model.weapon.AbstractMagicWeapons;
 import cl.uchile.dcc.finalreality.model.weapon.AbstractWeapon;
 import java.util.concurrent.BlockingQueue;
 import java.util.concurrent.Executors;
@@ -32,7 +33,7 @@ public abstract class AbstractPlayerCharacter extends AbstractCharacter implemen
     PlayerCharacter {
 
   private AbstractWeapon equippedWeapon = null;
-
+  private  AbstractMagicWeapons equippedMagicWeapon = null  ;
   /**
    * Creates a new character.
    * This constructor is <b>protected</b>, because it'll only be used by subclasses.
@@ -59,6 +60,13 @@ public abstract class AbstractPlayerCharacter extends AbstractCharacter implemen
   public void equip(AbstractWeapon weapon) {
     this.equippedWeapon = weapon;
   }
+  public void equipMagicWeapon(AbstractMagicWeapons weapon){
+    this.equippedMagicWeapon =weapon ;
+  }
+  public AbstractMagicWeapons getEquippedMagicWeapon(){
+    return equippedMagicWeapon;
+  }
+
 
   @Override
   public AbstractWeapon getEquippedWeapon() {
