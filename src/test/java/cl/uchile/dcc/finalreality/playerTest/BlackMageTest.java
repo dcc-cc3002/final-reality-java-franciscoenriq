@@ -5,6 +5,7 @@ import cl.uchile.dcc.finalreality.exceptions.InvalidStatValueException;
 import cl.uchile.dcc.finalreality.model.character.GameCharacter;
 import cl.uchile.dcc.finalreality.model.character.player.mages.BlackMage;
 import cl.uchile.dcc.finalreality.model.character.player.mages.WhiteMage;
+import cl.uchile.dcc.finalreality.model.weapon.Knife;
 import cl.uchile.dcc.finalreality.model.weapon.Staff;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -39,6 +40,13 @@ public class BlackMageTest {
         assertNotNull(blackMage1.getEquippedWeapon());
         assertEquals(staff.hashCode(),(blackMage1.getEquippedWeapon()).hashCode());
 
+    }
+    @Test
+    public void equipKnife(){
+        Knife knife = new Knife("cuchillo",34,12);
+        blackMage1.equipKnife(knife);
+        assertNotNull(blackMage1.getEquippedWeapon());
+        assertEquals(knife.hashCode(),(blackMage1.getEquippedWeapon()).hashCode());
     }
 
     @Test

@@ -9,21 +9,18 @@
 package cl.uchile.dcc.finalreality.model.character.player.mages;
 
 import cl.uchile.dcc.finalreality.exceptions.InvalidStatValueException;
-import cl.uchile.dcc.finalreality.exceptions.Require;
-import cl.uchile.dcc.finalreality.model.character.EnemyStates.Paralyzed;
-import cl.uchile.dcc.finalreality.model.character.EnemyStates.Poisoned;
+import cl.uchile.dcc.finalreality.exceptions.EnemyStates.Paralyzed;
+import cl.uchile.dcc.finalreality.exceptions.EnemyStates.Poisoned;
 import cl.uchile.dcc.finalreality.model.character.GameCharacter;
 import java.util.Objects;
 import java.util.concurrent.BlockingQueue;
 
 import cl.uchile.dcc.finalreality.model.character.player.AbstractPlayerCharacter;
 import cl.uchile.dcc.finalreality.model.character.player.PlayerCharacter;
-import cl.uchile.dcc.finalreality.model.weapon.Knife;
 import cl.uchile.dcc.finalreality.model.weapon.Staff;
 import org.jetbrains.annotations.NotNull;
-import cl.uchile.dcc.finalreality.model.character.EnemyStates.AbstractState;
 import cl.uchile.dcc.finalreality.model.character.Enemy;
-import cl.uchile.dcc.finalreality.model.character.EnemyStates.Poisoned;
+
 /**;
  * A {@link PlayerCharacter} that can equip {@code Staff}s and use <i>white magic</i>.
  *
@@ -83,9 +80,7 @@ public class WhiteMage extends AbstractMage {
    */
 
 
-  public void equipKnife(@NotNull Knife knife){
-    knife.equipWhiteMage(this);
-  }
+
   public void equipStaff(@NotNull Staff staff){
     staff.equipWhiteMage(this);
   }
@@ -102,13 +97,12 @@ public class WhiteMage extends AbstractMage {
       jugador.setCurrentHp(jugador.getCurrentHp()+a);
      }
     }
-    // TODO setear vida del jugador
+
 
   public void usePoison(@NotNull Enemy enemy) throws InvalidStatValueException {
 
     this.setCurrentMp(this.getCurrentMp()-40);
     enemy.setState(poisoned);
-
   }
   public void useParalis(@NotNull Enemy enemy) throws InvalidStatValueException {
     this.setCurrentMp(this.getCurrentMp() - 25);

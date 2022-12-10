@@ -34,13 +34,7 @@ public class WhiteMageTest {
         assertNull(whiteMage1.getEquippedWeapon());
         assertNull(whiteMage2.getEquippedWeapon());
     }
-    @Test
-    public void equipKnife(){
-        Knife knife = new Knife("cuchillo",34,12);
-        whiteMage1.equipKnife(knife);
-        assertNotNull(whiteMage1.getEquippedWeapon());
-        assertEquals(knife.hashCode(),(whiteMage1.getEquippedWeapon()).hashCode());
-    }
+
     @Test
     public void equipStaff(){
         Staff staff = new Staff("bastonsete",56,23,45);

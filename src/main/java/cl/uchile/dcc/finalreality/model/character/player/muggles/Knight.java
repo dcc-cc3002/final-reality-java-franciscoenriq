@@ -78,4 +78,14 @@ public class Knight extends AbstractPlayerCharacter {
     knife.equipKnight(this);
   }
 
+  public void notifyToAxe(Axe axe){
+    this.equipAxe(axe);
+  }
+  public void notifyToKnife(Knife knife){
+    this.equipKnife(knife);
+  }
+  public void notifyToSword(Sword sword){
+    this.equipSword(sword);
+  }
+
 }

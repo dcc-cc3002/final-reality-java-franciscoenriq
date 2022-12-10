@@ -14,7 +14,7 @@ import cl.uchile.dcc.finalreality.model.character.Enemy;
 import cl.uchile.dcc.finalreality.model.character.GameCharacter;
 import java.util.Objects;
 import java.util.concurrent.BlockingQueue;
-
+import cl.uchile.dcc.finalreality.model.weapon.Knife;
 import cl.uchile.dcc.finalreality.model.weapon.Staff;
 import org.jetbrains.annotations.NotNull;
 import cl.uchile.dcc.finalreality.model.weapon.Staff;
@@ -95,6 +95,7 @@ public class BlackMage extends AbstractMage {
     staff.equipBlackMage(this);
   }
 
+  public void equipKnife(@NotNull Knife knife){knife.equipBlackMage(this); }
 
   //methods to use the magic
 

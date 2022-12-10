@@ -1,6 +1,6 @@
 package cl.uchile.dcc.finalreality.model.weapon;
 
-import cl.uchile.dcc.finalreality.model.character.player.mages.WhiteMage;
+import cl.uchile.dcc.finalreality.model.character.player.mages.BlackMage;
 import cl.uchile.dcc.finalreality.model.character.player.muggles.Knight;
 import cl.uchile.dcc.finalreality.model.character.player.muggles.Thief;
 import org.jetbrains.annotations.NotNull;
@@ -17,7 +17,7 @@ public class Knife extends AbstractWeapon {
     public void equipKnight(@NotNull Knight knight){
         knight.equip(this);
     }
-    public void equipWhiteMage(@NotNull WhiteMage whiteMage){
-        whiteMage.equip(this);
+    public void equipBlackMage(@NotNull BlackMage blackMage){
+        blackMage.equip(this);
     }
 }

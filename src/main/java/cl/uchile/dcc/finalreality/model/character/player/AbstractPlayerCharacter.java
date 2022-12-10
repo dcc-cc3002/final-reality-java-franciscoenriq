@@ -18,7 +18,7 @@ import java.util.concurrent.Executors;
 import java.util.concurrent.TimeUnit;
 
 import org.jetbrains.annotations.NotNull;
-
+import cl.uchile.dcc.finalreality.model.weapon.Axe;
 /**
  * A class that holds all the information of a player-controlled character in the game.
  *
@@ -60,9 +60,8 @@ public abstract class AbstractPlayerCharacter extends AbstractCharacter implemen
   public void equip(AbstractWeapon weapon) {
     this.equippedWeapon = weapon;
   }
-  public void equipMagicWeapon(AbstractMagicWeapons weapon){
-    this.equippedMagicWeapon =weapon ;
-  }
+  public void equipMagicWeapon(AbstractMagicWeapons weapon){ this.equippedMagicWeapon =weapon;}
+
   public AbstractMagicWeapons getEquippedMagicWeapon(){
     return equippedMagicWeapon;
   }
@@ -84,15 +83,12 @@ public abstract class AbstractPlayerCharacter extends AbstractCharacter implemen
 
   public void waitTurn() {
     scheduledExecutor = Executors.newSingleThreadScheduledExecutor();
-
       scheduledExecutor.schedule(
               /* command = */ this::addToQueuePlayer,
               /* delay = */ this.getEquippedWeapon().getWeight() / 10,
               /* unit = */ TimeUnit.SECONDS);
 
   }
-
-
 
 
 }
