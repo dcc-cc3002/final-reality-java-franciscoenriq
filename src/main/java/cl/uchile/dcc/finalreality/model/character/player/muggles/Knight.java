@@ -6,12 +6,18 @@
  * work. If not, see <http://creativecommons.org/licenses/by/4.0/>.
  */
 
-package cl.uchile.dcc.finalreality.model.character.player;
+package cl.uchile.dcc.finalreality.model.character.player.muggles;
 
 import cl.uchile.dcc.finalreality.exceptions.InvalidStatValueException;
 import cl.uchile.dcc.finalreality.model.character.GameCharacter;
 import java.util.Objects;
 import java.util.concurrent.BlockingQueue;
+
+import cl.uchile.dcc.finalreality.model.character.player.AbstractPlayerCharacter;
+import cl.uchile.dcc.finalreality.model.character.player.PlayerCharacter;
+import cl.uchile.dcc.finalreality.model.weapon.Axe;
+import cl.uchile.dcc.finalreality.model.weapon.Knife;
+import cl.uchile.dcc.finalreality.model.weapon.Sword;
 import org.jetbrains.annotations.NotNull;
 
 /**
@@ -61,4 +67,25 @@ public class Knight extends AbstractPlayerCharacter {
         && maxHp == that.maxHp
         && defense == that.defense;
   }
+
+  public void equipSword(@NotNull Sword sword){
+    sword.equipKnight(this);
+  }
+  public void equipAxe(@NotNull Axe axe){
+    axe.equipKnight(this);
+  }
+  public void equipKnife(@NotNull Knife knife){
+    knife.equipKnight(this);
+  }
+
+  public void notifyToAxe(Axe axe){
+    this.equipAxe(axe);
+  }
+  public void notifyToKnife(Knife knife){
+    this.equipKnife(knife);
+  }
+  public void notifyToSword(Sword sword){
+    this.equipSword(sword);
+  }
+
 }

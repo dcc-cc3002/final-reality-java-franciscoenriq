@@ -6,26 +6,28 @@
  * work. If not, see <http://creativecommons.org/licenses/by/4.0/>.
  */
 
-package cl.uchile.dcc.finalreality.model.character.player;
+package cl.uchile.dcc.finalreality.model.character.player.mages;
 
 import cl.uchile.dcc.finalreality.exceptions.InvalidStatValueException;
-import cl.uchile.dcc.finalreality.exceptions.Require;
+import cl.uchile.dcc.finalreality.model.character.EnemyStates.Paralyzed;
+import cl.uchile.dcc.finalreality.model.character.EnemyStates.Poisoned;
 import cl.uchile.dcc.finalreality.model.character.GameCharacter;
 import java.util.Objects;
 import java.util.concurrent.BlockingQueue;
-import org.jetbrains.annotations.NotNull;
 
-/**
+import cl.uchile.dcc.finalreality.model.character.player.AbstractPlayerCharacter;
+import cl.uchile.dcc.finalreality.model.character.player.PlayerCharacter;
+import cl.uchile.dcc.finalreality.model.weapon.Staff;
+import org.jetbrains.annotations.NotNull;
+import cl.uchile.dcc.finalreality.model.character.Enemy;
+
+/**;
  * A {@link PlayerCharacter} that can equip {@code Staff}s and use <i>white magic</i>.
  *
  * @author <a href="https://www.github.com/r8vnhill">R8V</a>
  * @author ~Your name~
  */
-public class WhiteMage extends AbstractPlayerCharacter {
-
-  private int currentMp;
-  private final int maxMp;
-
+public class WhiteMage extends AbstractMage {
   /**
    * Creates a new character.
    *
@@ -38,12 +40,13 @@ public class WhiteMage extends AbstractPlayerCharacter {
    * @param turnsQueue
    *     the queue with the characters waiting for their turn
    */
-  protected WhiteMage(final @NotNull String name, final int maxHp, final int defense,
-      int maxMp, final @NotNull BlockingQueue<GameCharacter> turnsQueue)
-      throws InvalidStatValueException {
-    super(name, maxHp, defense, turnsQueue);
-    this.maxMp = maxMp;
-    this.currentMp = maxMp;
+  Poisoned poisoned;
+  Paralyzed paralyzed;
+  public WhiteMage(final @NotNull String name, final int maxHp, final int defense,
+                   int maxMp, final @NotNull BlockingQueue<GameCharacter> turnsQueue)
+          throws InvalidStatValueException {
+    super(name, maxHp, defense, maxMp, turnsQueue);
+
   }
 
   @Override
@@ -73,25 +76,36 @@ public class WhiteMage extends AbstractPlayerCharacter {
   }
 
   /**
-   * Returns the current MP of the character.
-   */
-  public int getCurrentMp() {
-    return currentMp;
-  }
-
-  /**
    * Sets the current MP of the character to {@code newMp}.
    */
-  public void setCurrentMp(final int newMp) throws InvalidStatValueException {
-    Require.statValueAtLeast(0, newMp, "Current MP");
-    Require.statValueAtMost(maxMp, newMp, "Current MP");
-    this.currentMp = newMp;
+
+
+
+  public void equipStaff(@NotNull Staff staff){
+    staff.equipWhiteMage(this);
   }
 
-  /**
-   * Returns the max MP of the character.
-   */
-  public int getMaxMp() {
-    return maxMp;
+
+  public void useHealing(@NotNull AbstractPlayerCharacter jugador) throws InvalidStatValueException {
+
+    this.setCurrentMp(this.getCurrentMp() - 15);
+    int a = jugador.getMaxHp()/5;
+    if (a + jugador.getCurrentHp() > jugador.getMaxHp()) {
+      jugador.setCurrentHp(jugador.getMaxHp());
+    }
+    else{
+      jugador.setCurrentHp(jugador.getCurrentHp()+a);
+     }
+    }
+
+
+  public void usePoison(@NotNull Enemy enemy) throws InvalidStatValueException {
+
+    this.setCurrentMp(this.getCurrentMp()-40);
+    enemy.setState(poisoned);
+  }
+  public void useParalis(@NotNull Enemy enemy) throws InvalidStatValueException {
+    this.setCurrentMp(this.getCurrentMp() - 25);
+    enemy.setState(paralyzed);
   }
 }

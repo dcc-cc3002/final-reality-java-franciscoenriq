@@ -6,15 +6,18 @@
  * work. If not, see <http://creativecommons.org/licenses/by/4.0/>.
  */
 
-package cl.uchile.dcc.finalreality.model.character.player;
+package cl.uchile.dcc.finalreality.model.character.player.mages;
 
 import cl.uchile.dcc.finalreality.exceptions.InvalidStatValueException;
 import cl.uchile.dcc.finalreality.exceptions.Require;
+import cl.uchile.dcc.finalreality.model.character.Enemy;
 import cl.uchile.dcc.finalreality.model.character.GameCharacter;
 import java.util.Objects;
 import java.util.concurrent.BlockingQueue;
+import cl.uchile.dcc.finalreality.model.weapon.Knife;
+import cl.uchile.dcc.finalreality.model.weapon.Staff;
 import org.jetbrains.annotations.NotNull;
-
+import cl.uchile.dcc.finalreality.model.weapon.Staff;
 /**
  * A Black Mage is a type of player character that can cast black magic.
  *
@@ -22,11 +25,7 @@ import org.jetbrains.annotations.NotNull;
  * @author ~Your name~
  * @version 2.0
  */
-public class BlackMage extends AbstractPlayerCharacter {
-
-  private int currentMp;
-  private final int maxMp;
-
+public class BlackMage extends AbstractMage {
   /**
    * Creates a new Black Mage.
    *
@@ -38,40 +37,20 @@ public class BlackMage extends AbstractPlayerCharacter {
    *     the character's defense
    * @param turnsQueue
    *     the queue with the characters waiting for their turn
+   * @param maxMp
+   *
    */
-  protected BlackMage(final @NotNull String name, final int maxHp, final int defense,
-      int maxMp, final @NotNull BlockingQueue<GameCharacter> turnsQueue)
-      throws InvalidStatValueException {
-    super(name, maxHp, defense, turnsQueue);
-    Require.statValueAtLeast(0, maxMp, "Max MP");
-    this.maxMp = maxMp;
-    this.currentMp = maxMp;
+  public BlackMage(final @NotNull String name, final int maxHp, final int defense,
+                           int maxMp, final @NotNull BlockingQueue<GameCharacter> turnsQueue)
+          throws InvalidStatValueException {
+    super(name, maxHp, defense, maxMp, turnsQueue);
+
   }
 
   // region : ACCESSORS
-
-  /**
-   * Returns the character's current MP.
-   */
-  private int getCurrentMp() {
-    return currentMp;
-  }
-
   /**
    * Sets the character's current MP.
    */
-  private void setCurrentMp(final int currentMp) throws InvalidStatValueException {
-    Require.statValueAtLeast(0, currentMp, "Current MP");
-    Require.statValueAtMost(maxMp, currentMp, "Current MP");
-    this.currentMp = currentMp;
-  }
-
-  /**
-   * Returns the character's max MP.
-   */
-  private int getMaxMp() {
-    return maxMp;
-  }
   // endregion
 
   // region : UTILITY METHODS
@@ -100,5 +79,27 @@ public class BlackMage extends AbstractPlayerCharacter {
   public int hashCode() {
     return Objects.hash(BlackMage.class, name, maxHp, defense, maxMp);
   }
+
   // endregion
+
+  public void equipStaff(@NotNull Staff staff){
+    staff.equipBlackMage(this);
+  }
+
+  public void equipKnife(@NotNull Knife knife){knife.equipBlackMage(this); }
+  //methods to use the magic
+  public void useThunder(@NotNull Enemy enemy)  throws InvalidStatValueException{
+    this.setCurrentMp(this.getCurrentMp()-15);
+    enemy.setCurrentHp(enemy.getCurrentHp() - this.getEquippedMagicWeapon().getMagicDamage() );
+    //TODO falta ver la probabilidad de quedar paralizado
+
+  }
+  public void useFire(@NotNull Enemy enemy)  throws InvalidStatValueException {
+    this.setCurrentMp(this.getCurrentMp()-15);
+    enemy.setCurrentHp(enemy.getCurrentHp()-this.getEquippedMagicWeapon().getMagicDamage());
+
+    //TODO falta ver la probabilidad de quedar quemado
+  }
+
+
 }
