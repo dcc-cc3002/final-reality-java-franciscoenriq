@@ -33,16 +33,14 @@ public class AbstractMage extends AbstractPlayerCharacter {
      * Returns the current MP of the character.
      * Returns the max MP of the character.
      */
+
     public int getCurrentMp() {
         return currentMp;
     }
-
     public int getMaxMp() {
         return maxMp;
     }
-
     public AbstractSpell getSpell(){return spell;}
-
 
     public void setSpell(AbstractSpell spell){this.spell = spell;}
     public void setCurrentMp(int mana) throws InvalidStatValueException{

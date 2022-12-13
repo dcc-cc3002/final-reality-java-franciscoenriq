@@ -3,11 +3,14 @@ package cl.uchile.dcc.finalreality.controller;
 import cl.uchile.dcc.finalreality.exceptions.InvalidStatValueException;
 import cl.uchile.dcc.finalreality.model.character.Enemy;
 import cl.uchile.dcc.finalreality.model.character.GameCharacter;
+import cl.uchile.dcc.finalreality.model.character.player.AbstractPlayerCharacter;
+import cl.uchile.dcc.finalreality.model.character.player.mages.AbstractMage;
 import cl.uchile.dcc.finalreality.model.character.player.mages.BlackMage;
 import cl.uchile.dcc.finalreality.model.character.player.mages.WhiteMage;
 import cl.uchile.dcc.finalreality.model.character.player.muggles.Engineer;
 import cl.uchile.dcc.finalreality.model.character.player.muggles.Knight;
 import cl.uchile.dcc.finalreality.model.character.player.muggles.Thief;
+import cl.uchile.dcc.finalreality.model.character.player.spellUse.AbstractSpell;
 import cl.uchile.dcc.finalreality.model.weapon.*;
 
 import java.util.concurrent.BlockingQueue;
@@ -80,4 +83,20 @@ public class GameInitialization implements State{
     public Knife createKnife(String name, int damage, int weight) {
         return new Knife(name, damage, weight);
     }
+
+
+    //este metodo no hace nada ya que en este estado no es necesario usarlo
+    @Override
+    public void setMagic(AbstractMage abstractMage, AbstractSpell abstractSpell) {
+    }
+    //Luego de setear lo necesario para el juego cambiamos el estado del controlador,
+    @Override
+    public void starGame() {
+        controller.setState(new PlayerTurn());
+    }
+    //Acá estos metodos deben hacer nada debido a que aun no empieza el juego .
+    @Override
+    public void attackEnemy(AbstractPlayerCharacter playerCharacter, Enemy enemy) {}
+    @Override
+    public void attackEnemyWhithMage(AbstractMage mage, Enemy enemy) {}
 }

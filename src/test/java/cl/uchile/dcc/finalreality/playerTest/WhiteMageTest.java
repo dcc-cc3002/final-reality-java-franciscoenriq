@@ -39,8 +39,8 @@ public class WhiteMageTest {
     public void equipStaff(){
         Staff staff = new Staff("bastonsete",56,23,45);
         whiteMage1.equipStaff(staff);
-        assertNotNull(whiteMage1.getEquippedWeapon());
-        assertEquals(staff.hashCode(),(whiteMage1.getEquippedWeapon()).hashCode());
+        assertNotNull(whiteMage1.getEquippedMagicWeapon());
+        assertEquals(staff.hashCode(),(whiteMage1.getEquippedMagicWeapon()).hashCode());
     }
 
     @Test
@@ -50,7 +50,6 @@ public class WhiteMageTest {
         assertTrue(whiteMage1.equals(whiteMageExpected1));
         assertFalse(whiteMage2.equals(whiteMageExpected1));
     }
-
     @Test
     public void toStringTest()throws InterruptedException, InvalidStatValueException {
         BlockingQueue<GameCharacter> queue = new LinkedBlockingQueue<>();
@@ -58,15 +57,11 @@ public class WhiteMageTest {
         assertEquals(whiteMage1.toString(),whiteMageExpected1.toString());
         assertNotEquals(whiteMage2.toString(),whiteMageExpected1.toString());
     }
-
     public void usingMagic() throws InvalidStatValueException{
         Staff staff = new Staff("baston",34,23,65);
         whiteMage3.equipStaff(staff);
         whiteMage3.usePoison(enemy);
         assertNotEquals(enemy.getState(),null);
-
-
-
     }
 
 }

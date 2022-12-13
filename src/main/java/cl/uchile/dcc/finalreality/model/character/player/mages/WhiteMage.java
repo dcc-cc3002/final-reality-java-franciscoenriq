@@ -9,8 +9,8 @@
 package cl.uchile.dcc.finalreality.model.character.player.mages;
 
 import cl.uchile.dcc.finalreality.exceptions.InvalidStatValueException;
-import cl.uchile.dcc.finalreality.exceptions.EnemyStates.Paralyzed;
-import cl.uchile.dcc.finalreality.exceptions.EnemyStates.Poisoned;
+import cl.uchile.dcc.finalreality.model.character.EnemyStates.Paralyzed;
+import cl.uchile.dcc.finalreality.model.character.EnemyStates.Poisoned;
 import cl.uchile.dcc.finalreality.model.character.GameCharacter;
 import java.util.Objects;
 import java.util.concurrent.BlockingQueue;

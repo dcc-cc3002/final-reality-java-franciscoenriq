@@ -26,9 +26,6 @@ import cl.uchile.dcc.finalreality.model.weapon.Staff;
  * @version 2.0
  */
 public class BlackMage extends AbstractMage {
-
-
-
   /**
    * Creates a new Black Mage.
    *
@@ -41,13 +38,8 @@ public class BlackMage extends AbstractMage {
    * @param turnsQueue
    *     the queue with the characters waiting for their turn
    * @param maxMp
-
    *
    */
-
-
-
-
   public BlackMage(final @NotNull String name, final int maxHp, final int defense,
                            int maxMp, final @NotNull BlockingQueue<GameCharacter> turnsQueue)
           throws InvalidStatValueException {
@@ -59,7 +51,6 @@ public class BlackMage extends AbstractMage {
   /**
    * Sets the character's current MP.
    */
-
   // endregion
 
   // region : UTILITY METHODS
@@ -96,14 +87,12 @@ public class BlackMage extends AbstractMage {
   }
 
   public void equipKnife(@NotNull Knife knife){knife.equipBlackMage(this); }
-
   //methods to use the magic
-
   public void useThunder(@NotNull Enemy enemy)  throws InvalidStatValueException{
     this.setCurrentMp(this.getCurrentMp()-15);
-
     enemy.setCurrentHp(enemy.getCurrentHp() - this.getEquippedMagicWeapon().getMagicDamage() );
     //TODO falta ver la probabilidad de quedar paralizado
+
   }
   public void useFire(@NotNull Enemy enemy)  throws InvalidStatValueException {
     this.setCurrentMp(this.getCurrentMp()-15);

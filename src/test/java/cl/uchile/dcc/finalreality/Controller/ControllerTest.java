@@ -2,6 +2,7 @@ package cl.uchile.dcc.finalreality.Controller;
 
 import cl.uchile.dcc.finalreality.controller.Controller;
 import cl.uchile.dcc.finalreality.controller.GameInitialization;
+import cl.uchile.dcc.finalreality.controller.PlayerTurn;
 import cl.uchile.dcc.finalreality.controller.State;
 import cl.uchile.dcc.finalreality.exceptions.InvalidStatValueException;
 import cl.uchile.dcc.finalreality.model.character.Enemy;
@@ -14,12 +15,11 @@ import cl.uchile.dcc.finalreality.model.character.player.muggles.Thief;
 import cl.uchile.dcc.finalreality.model.weapon.*;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 import java.util.concurrent.BlockingQueue;
 import java.util.concurrent.LinkedBlockingQueue;
 public class ControllerTest {
-
+    //testeamos controller cuando su estado esta en GameInitialization
     private Controller controller;
     private WhiteMage whiteMage;
     private BlackMage blackMage;
@@ -39,6 +39,7 @@ public class ControllerTest {
     public void setUpController() throws InvalidStatValueException,InterruptedException {
         BlockingQueue<GameCharacter> queue = new LinkedBlockingQueue<>();
         controller = new Controller();
+        GameInitialization gameInitialization = new GameInitialization();
         whiteMage = new WhiteMage("magordito",50,40,80,queue);
         blackMage = new BlackMage("magordito negro",80,80,80,queue);
         knight = new Knight("caballero",70,60,queue);
@@ -56,11 +57,8 @@ public class ControllerTest {
 
     @Test
     public void inicialStateTest(){
-        GameInitialization a = new GameInitialization();
-
-        assertEquals(a.toString(),controller.getState().toString());
+        assertNotNull(controller.getState());
     }
-
 
     //---------------------------------------------------------------------------------------
     @Test
@@ -125,5 +123,13 @@ public class ControllerTest {
         assertEquals(a,knife);
     }
     //---------------------------------------------------------------------------------------
+    @Test
+    public void seetStateTest(){
+        GameInitialization stateTest = new GameInitialization();
+        PlayerTurn stateTest1 = new PlayerTurn();
+        assertEquals(stateTest.getClass(),controller.getState().getClass());
+        controller.setState(new PlayerTurn());
+        assertEquals(stateTest1.getClass(),controller.getState().getClass());
 
+    }
 }

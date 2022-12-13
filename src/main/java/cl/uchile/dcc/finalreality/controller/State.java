@@ -2,11 +2,14 @@ package cl.uchile.dcc.finalreality.controller;
 import cl.uchile.dcc.finalreality.exceptions.InvalidStatValueException;
 import cl.uchile.dcc.finalreality.model.character.Enemy;
 import cl.uchile.dcc.finalreality.model.character.GameCharacter;
+import cl.uchile.dcc.finalreality.model.character.player.AbstractPlayerCharacter;
+import cl.uchile.dcc.finalreality.model.character.player.mages.AbstractMage;
 import cl.uchile.dcc.finalreality.model.character.player.mages.BlackMage;
 import cl.uchile.dcc.finalreality.model.character.player.mages.WhiteMage;
 import cl.uchile.dcc.finalreality.model.character.player.muggles.Engineer;
 import cl.uchile.dcc.finalreality.model.character.player.muggles.Knight;
 import cl.uchile.dcc.finalreality.model.character.player.muggles.Thief;
+import cl.uchile.dcc.finalreality.model.character.player.spellUse.AbstractSpell;
 import cl.uchile.dcc.finalreality.model.weapon.*;
 
 import java.util.concurrent.BlockingQueue;
@@ -38,4 +41,12 @@ public interface State {
 
     public Enemy createEnemy(String name,int weight, int hp, int defense) throws InvalidStatValueException;
 
+
+    public void setMagic(AbstractMage abstractMage, AbstractSpell abstractSpell);
+
+    public void starGame();
+
+    public void attackEnemy(AbstractPlayerCharacter playerCharacter,Enemy enemy);
+
+    public void attackEnemyWhithMage(AbstractMage mage,Enemy enemy);
 }

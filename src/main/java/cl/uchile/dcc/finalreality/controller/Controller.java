@@ -12,11 +12,13 @@ import java.util.concurrent.Executors;
 import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.TimeUnit;
 
+import cl.uchile.dcc.finalreality.model.character.player.mages.AbstractMage;
 import cl.uchile.dcc.finalreality.model.character.player.mages.BlackMage;
 import cl.uchile.dcc.finalreality.model.character.player.mages.WhiteMage;
 import cl.uchile.dcc.finalreality.model.character.player.muggles.Thief;
 import cl.uchile.dcc.finalreality.model.character.player.muggles.Engineer;
 import cl.uchile.dcc.finalreality.model.character.player.muggles.Knight;
+import cl.uchile.dcc.finalreality.model.character.player.spellUse.AbstractSpell;
 import cl.uchile.dcc.finalreality.model.weapon.*;
 import org.jetbrains.annotations.NotNull;
 import cl.uchile.dcc.finalreality.controller.GameInitialization;
@@ -35,7 +37,7 @@ public class Controller  {
         this.state.setController(this);
     }
     public State getState(){return state;}
-    
+
     //-------------------------------------------------------------------------------------
 
     public Knight createKnight(String name, int hp, int defense) throws InvalidStatValueException{
@@ -76,7 +78,18 @@ public class Controller  {
     public Knife createKnife(String name, int damage, int weight) {
         return state.createKnife(name, damage, weight);
     }
-
+    //para iniciar el juego definimos el siguiente metodo
+    public void starGame(){
+        state.starGame();
+    }
     //_----------------------------------------------------------------------------------------
+
+    public void setMagic(AbstractMage abstractMage, AbstractSpell abstractSpell){
+        state.setMagic(abstractMage,abstractSpell);
+    }
+
+    public void attackEnemy(AbstractPlayerCharacter playerCharacter,Enemy enemy){
+
+    }
 
 }

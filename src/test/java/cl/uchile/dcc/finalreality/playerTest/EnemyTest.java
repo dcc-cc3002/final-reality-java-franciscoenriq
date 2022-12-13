@@ -1,6 +1,8 @@
 package cl.uchile.dcc.finalreality.playerTest;
 import cl.uchile.dcc.finalreality.exceptions.InvalidStatValueException;
 import cl.uchile.dcc.finalreality.model.character.Enemy;
+import cl.uchile.dcc.finalreality.model.character.EnemyStates.AbstractState;
+import cl.uchile.dcc.finalreality.model.character.EnemyStates.Death;
 import cl.uchile.dcc.finalreality.model.character.GameCharacter;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -104,6 +106,17 @@ public class EnemyTest {
     public void gettWeightTest(){
         final int weightExpected = 12;
         assertEquals(weightExpected,monster1.getWeight());
+    }
+    @Test
+    public void getStateTest(){
+        assertNull(monster1.getState());
+        assertNull(monster2.getState());
+    }
+    @Test
+    public void setStateTest(){
+        Death muerto = new Death();
+        monster1.setState(muerto);
+        assertEquals(muerto.getClass(),monster1.getState().getClass());
     }
 
 }

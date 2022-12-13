@@ -6,7 +6,7 @@ import java.util.Objects;
 import java.util.concurrent.BlockingQueue;
 import java.util.concurrent.Executors;
 import java.util.concurrent.TimeUnit;
-import cl.uchile.dcc.finalreality.exceptions.EnemyStates.AbstractState;
+import cl.uchile.dcc.finalreality.model.character.EnemyStates.AbstractState;
 
 
 import org.jetbrains.annotations.NotNull;

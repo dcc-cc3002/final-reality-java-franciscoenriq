@@ -37,8 +37,8 @@ public class BlackMageTest {
     public void equipStaff(){
         Staff staff = new Staff("baston",34,23,65);
         blackMage1.equipStaff(staff);
-        assertNotNull(blackMage1.getEquippedWeapon());
-        assertEquals(staff.hashCode(),(blackMage1.getEquippedWeapon()).hashCode());
+        assertNotNull(blackMage1.getEquippedMagicWeapon());
+        assertEquals(staff.hashCode(),(blackMage1.getEquippedMagicWeapon()).hashCode());
 
     }
     @Test
